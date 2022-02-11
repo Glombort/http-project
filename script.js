@@ -13,6 +13,6 @@ if (mm<10) {
 
 today =yyyy+'-'+mm+'-'+dd;
 
-document.getElementById("date-selector").setAttribute("max", today);
+document.getElementById("date-picker").setAttribute("max", today);
 
 
