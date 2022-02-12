@@ -24,7 +24,9 @@ const result = document.querySelector(".relevant-news")
 search.addEventListener("submit", retrieveNews)
 
 function retrieveNews(e) {
-  e.preventDefault() //to prevent page from reloading 
+    
+    result.innerHTML = "" //clears the page when a new date is submitted
+    e.preventDefault() //to prevent page from reloading 
   
   //APIkey:
   const apiKey = '6cc6d299133d49b389492392edecde03'
