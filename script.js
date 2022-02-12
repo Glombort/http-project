@@ -40,7 +40,21 @@ function retrieveNews(e) {
       return response.json()
     })
   .then((data) => {console.log(data)
+
+//DISPLAY THE HEADLINES:
+    data.articles.forEach(articles => {
+        let li = document.createElement("li")
+        let a = document.createElement("a")
+        a.setAttribute('href', articles.url) //the anchor tag will open to the url of the article selected.
+        a.setAttribute('target', '_blank') //opens the article in a new tab.
+        a.textContent = articles.title
+        li.appendChild(a)
+        result.appendChild(li) 
+    })
+
   });
+
+
 
   //fetch url
   //then get reponse
