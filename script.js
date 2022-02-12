@@ -16,3 +16,27 @@ today =yyyy+'-'+mm+'-'+dd;
 document.getElementById("date-picker").setAttribute("max", today);
 
 
+
+const search = document.querySelector(".submit-date")
+const input = document.querySelector(".input")
+const result = document.querySelector(".relevant-news")
+
+search.addEventListener("submit", retrieveNews)
+
+function retrieveNews(e) {
+  e.preventDefault() //to prevent page from reloading 
+  
+  //APIkey:
+  const apiKey = '6cc6d299133d49b389492392edecde03'
+  
+  let reference = input.value;
+  //URL:
+  
+  let url = `https://newsapi.org/v2/everything?q=${reference}&from=2022-01-11&sortBy=publishedAt&apiKey=${apiKey}`
+  console.log(reference);
+  
+
+  //fetch url
+  //then get reponse
+  //data => response.json
+}
