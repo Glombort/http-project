@@ -32,9 +32,15 @@ function retrieveNews(e) {
   let reference = input.value;
   //URL:
   
-  let url = `https://newsapi.org/v2/everything?q=${reference}&from=2022-01-11&sortBy=publishedAt&apiKey=${apiKey}`
+  let url = `https://newsapi.org/v2/everything?q=${reference}&apiKey=${apiKey}`
   console.log(reference);
   
+  fetch(url)
+  .then((response) => {
+      return response.json()
+    })
+  .then((data) => {console.log(data)
+  });
 
   //fetch url
   //then get reponse
