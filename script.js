@@ -25,17 +25,15 @@ search.addEventListener("submit", retrieveNews)
 
 function retrieveNews(e) {
     
-    result.innerHTML = "" //clears the page when a new date is submitted
-    e.preventDefault() //to prevent page from reloading 
+    result.innerHTML = "" //Clears the page when a new date is submitted.
+    e.preventDefault() //To prevent page from reloading automatically when a date is submitted.
   
-  //APIkey:
   const apiKey = '6cc6d299133d49b389492392edecde03'
+  let articleHeadline = input.value;
+  let url = `https://newsapi.org/v2/everything?q=${articleHeadline}&apiKey=${apiKey}`
   
-  let reference = input.value;
-  //URL:
   
-  let url = `https://newsapi.org/v2/everything?q=${reference}&apiKey=${apiKey}`
-  console.log(reference);
+  console.log(articleHeadline);
   
   fetch(url)
   .then((response) => {
@@ -43,12 +41,13 @@ function retrieveNews(e) {
     })
   .then((data) => {console.log(data)
 
+
 //DISPLAY THE HEADLINES:
     data.articles.forEach(articles => {
-        let li = document.createElement("li")
-        let a = document.createElement("a")
-        a.setAttribute('href', articles.url) //the anchor tag will open to the url of the article selected.
-        a.setAttribute('target', '_blank') //opens the article in a new tab.
+        let li = document.createElement("li") //Creating a list of headlines.
+        let a = document.createElement("a") //Creating the anchor tags to link to the articles.
+        a.setAttribute('href', articles.url) //The anchor tag will open to the url of the article selected.
+        a.setAttribute('target', '_blank') //Opens the article in a new tab.
         a.textContent = articles.title
         li.appendChild(a)
         result.appendChild(li) 
@@ -56,9 +55,4 @@ function retrieveNews(e) {
 
   });
 
-
-
-  //fetch url
-  //then get reponse
-  //data => response.json
 }
