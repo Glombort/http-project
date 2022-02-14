@@ -17,7 +17,7 @@ document.getElementById("date-picker").setAttribute("max", today);
 
 
 
-const search = document.querySelector(".submit-date")
+const search = document.querySelector(".date-picker")
 const input = document.querySelector(".input")
 const result = document.querySelector(".relevant-news")
 
