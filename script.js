@@ -22,45 +22,11 @@ document.getElementById("date-picker").setAttribute("max", today);
 const newsAPIKEY = "0339a12944af485e80cd4cdbb6541d75"
 const baseNewsURL = "https://newsapi.org/v2/"
 
-//GET IMAGE:
-function getImage() {
-    let URL = `${baseNewsURL}top-headlines?country=us&apiKey=${newsAPIKEY}` //Will change this when search implemented
-    
-    return fetch(URL)
-    .then(response => response.json())
-    .then(response => response.articles[0])//Will also change this to searched articles
-    .then(response => response.urlToImage)
-    .then(imageURL => {
-        //Items to put to output area, just adding the image for now
-        const articleImage = document.createElement('img')
-        articleImage.src = imageURL;
-        //Will add alt when using searched film
-    //Probably needs a class as well
-        //Returns image element containing the articles image.
-        return articleImage
-    })
-    .catch(console.error)
-}
-
-/*
-Output area
-*/
-const output = document.querySelector('output')
-const form = document.querySelector('form')
-form.addEventListener('submit', function(event){userOutput(event)});
-
-function userOutput(event) {
-    //Lets JS control form
-    event.preventDefault();
-    
-    //Adding items to <output>
-    getImage().then(image => output.append(image))
-}
-
-
 //FETCH THE ARTICLES
 const search = document.querySelector(".date-picker")
 const input = document.querySelector(".input")
+
+const output = document.querySelector('output')
 const result = document.querySelector(".relevant-news")
 
 search.addEventListener("submit", retrieveNews)
@@ -70,9 +36,8 @@ function retrieveNews(e) {
     result.innerHTML = "" //Clears the page when a new date is submitted.
     e.preventDefault() //To prevent page from reloading automatically when a date is submitted.
   
-  const apiKey = '6cc6d299133d49b389492392edecde03'
-  let articleHeadline = input.value;
-  let url = `https://newsapi.org/v2/everything?q=${articleHeadline}&apiKey=${apiKey}`
+    let articleHeadline = input.value;
+    let url = `${baseNewsURL}everything?q=${articleHeadline}&apiKey=${newsAPIKEY}`
   
   
   console.log(articleHeadline);
@@ -82,20 +47,60 @@ function retrieveNews(e) {
       return response.json()
     })
   .then((data) => {console.log(data)
-
-
-//DISPLAY THE HEADLINES:
-    data.articles.forEach(articles => {
-        let li = document.createElement("li") //Creating a list of headlines.
-        let a = document.createElement("a") //Creating the anchor tags to link to the articles.
-        a.setAttribute('href', articles.url) //The anchor tag will open to the url of the article selected.
-        a.setAttribute('target', '_blank') //Opens the article in a new tab.
-        a.textContent = articles.title
-        li.appendChild(a)
-        result.appendChild(li) 
-    })
-
-  });
+    outputArticle(data.articles[0]) //Using the first article found for now, can change to something else later
+        //DISPLAY THE HEADLINES:
+        data.articles.forEach(articles => {
+            let li = document.createElement("li") //Creating a list of headlines.
+            let a = document.createElement("a") //Creating the anchor tags to link to the articles.
+            a.setAttribute('href', articles.url) //The anchor tag will open to the url of the article selected.
+            a.setAttribute('target', '_blank') //Opens the article in a new tab.
+            a.textContent = articles.title
+            li.appendChild(a)
+            result.appendChild(li) 
+        })
+  }); 
 
 }
 
+/*
+Output Area
+*/
+
+function outputArticle(article) {
+    //Clearing output for new article
+    output.innerHTML = ""
+    //Fetching the different data
+    const author = article.author;
+    const description = article.description;
+    const title = article.title;
+    const linkURL = article.url;
+    const imageURL = article.urlToImage;
+
+    //Headline
+    const headline = document.createElement('h2');
+    headline.textContent = title;
+
+    // Written By
+    const writer = document.createElement('h3');
+    writer.innerHTML = `Written by - ${author}`;
+
+    //Synopsis
+    const synopsis = document.createElement('p')
+    synopsis.innerHTML = description
+    
+    //Image
+    const articleImage = document.createElement('img');
+    articleImage.src = imageURL;
+    articleImage.alt = `Image for ${title}`
+    //Probably needs a class as well
+
+    //Creating sections for each part
+    const wordSection = document.createElement('article');
+    const imageSection = document.createElement('article');
+
+    //Apending to specific sections
+    wordSection.append(headline, writer, synopsis);
+    imageSection.append(articleImage);
+    //Appending sections to overall output area
+    output.append(wordSection, imageSection)
+}
