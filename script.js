@@ -29,13 +29,17 @@ const input = document.querySelector(".input")
 const output = document.querySelector('output')
 const result = document.querySelector(".relevant-news")
 
+//Get the button for the fun for later
+const fun = document.querySelector(".fun");
+
 search.addEventListener("submit", retrieveNews)
 
 function retrieveNews(e) {
     
     result.innerHTML = "" //Clears the page when a new date is submitted.
     e.preventDefault() //To prevent page from reloading automatically when a date is submitted.
-  
+    fun.classList.remove("hide")
+
     let articleHeadline = input.value;
     let url = `${baseNewsURL}everything?q=${articleHeadline}&apiKey=${newsAPIKEY}`
   
@@ -86,6 +90,7 @@ function outputArticle(article) {
     //Headline
     const headline = document.createElement('h2');
     headline.textContent = title;
+    headline.className = "headline"
 
     // Written By
     const writer = document.createElement('h3');
@@ -99,7 +104,7 @@ function outputArticle(article) {
     const articleImage = document.createElement('img');
     articleImage.src = imageURL;
     articleImage.alt = `Image for ${title}`
-    //Probably needs a class as well
+    articleImage.className = "article-image"
 
     //Creating sections for each part
     const wordSection = document.createElement('article');
@@ -110,4 +115,37 @@ function outputArticle(article) {
     imageSection.append(articleImage);
     //Appending sections to overall output area
     output.append(wordSection, imageSection)
+}
+
+
+/*
+Secondary API's
+*/
+
+//Urls for other APIs, these don't need keys.
+const buzzURL = "https://corporatebs-generator.sameerkumar.website/"
+const picsumURL = "https://picsum.photos/200/300" //Can change the numbers for sizing when have proper layout
+
+//Event Listener for clicking the button
+fun.addEventListener("submit", secondaryAPI);
+
+function secondaryAPI(e) {
+    
+    e.preventDefault();
+
+    fetch(buzzURL)
+    .then(response => response.json())
+    .then(json => json["phrase"])
+    .then(phrase => {
+        const headline = document.querySelector(".headline")
+        headline.innerHTML = phrase
+    })
+
+    fetch(picsumURL)
+    .then(response => response["url"])
+    .then(url => {
+        const articleImage = document.querySelector(".article-image");
+        articleImage.src = url
+    })
+
 }
