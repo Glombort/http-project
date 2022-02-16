@@ -5,32 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet"  href=".\styles\styles.css">
+    <link rel="stylesheet" href="style.css">
     <title>Http Project</title>
 </head>
 <body>
 
   <main>
     
-    <form class="date-picker">
-        <label for="Select Date">Select Date:</label>
+    <button data-modal-target="#modal">View Instructions</button>
+    <div class="modal" id="modal">
+      <div class="modal-header">
+        <div class="title">Instructions</div>
+        <button data-close-button class="close-button">&times;</button>
+      </div>
+      <div class="modal-body">
+          Select a date and press submit to view the top news story from that day.
+          <br>
+          <br>
+          Click the FUN button to generate a new article with a different heading and image.
+      </div>
+    </div>
+    <div id="overlay"></div>
 
-        <input class="input" id="date-picker" type="date" name="Date-Picker"
-            min="" max="2000-13-13">
-        <input type="submit">
-    </form>       
-    
-    <form class="fun hide">
-      <button type="submit">Fun!</button>
-    </form>
+
+    <div>
+        <form class="date-picker">
+            <label for="Select Date">Select Date:</label>
+
+            <input class="input" id="date-picker" type="date" name="Date-Picker"
+                min="" max="2000-13-13">
+            <input type="submit">
+        </form>       
+        
+        <form class="fun hide">
+        <button type="submit">Fun!</button>
+        </form>
+    </div>
+
+
 
     <output></output>
 
 
-     <div class="news-container">
-        <ul class="relevant-news">
-            <p class="relevant-news"></p>
-        </ul>
-    </div>
+        <div class="news-container">
+            <ul class="relevant-news">
+                <p class="relevant-news"></p>
+            </ul>
+        </div>
 
 
 </main>
