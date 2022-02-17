@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,900;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet"  href=".\styles\styles.css">
     <link rel="stylesheet" href="style.css">
     <title>Http Project</title>
@@ -12,9 +12,10 @@
 <body>
 
   <main>
-    
-    <nav class="nav"> NEWSTOPIA
-    <button data-modal-target="#modal">View Instructions</button>
+    <div class="general">
+
+    <nav class="nav"> TOP NEWS
+    <button data-modal-target="#modal" class="app-buttons">View Instructions</button>
     <div class="modal" id="modal">
       <div class="modal-header">
         <div class="title">Instructions</div>
@@ -36,26 +37,28 @@
 
             <input class="input" id="date-picker" type="date" name="Date-Picker"
                 min="" max="2000-13-13">
-            <input type="submit">
+            <input class="app-buttons" type="submit">
         </form>       
         
         <form class="fun hide">
-        <button type="submit">Fun!</button>
+        <button class="app-buttons" type="submit">Fun!</button>
         </form>
     </div>
 
 
-    <div class="output">
-    <output></output>
+    <div class="outputs">
 
+        <output></output>
 
-        <div class="news-container">
+        <div class="news-container outputs">
             <ul class="relevant-news">
                 <p class="relevant-news"></p>
             </ul>
         </div>
-    </div>
 
+
+    </div>
+</div>
 </main>
     <script src="script.js"></script>
 </body>

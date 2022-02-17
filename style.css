@@ -1,4 +1,4 @@
-* {
+body {
     background: #edf7f6;
     font-family:'Lato', sans-serif;;
 }
@@ -68,7 +68,7 @@ nav {
     padding: 2%;
     background-color: #1d84b5;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 18px;
     font-family: 'Lato', sans-serif;
     color: #FFFFFF;
 }
@@ -82,8 +82,19 @@ nav {
     align-items: center;
 }
 
-.output {
-    align-items: center;
-    justify-content: space-evenly;
-    
+.app-buttons::after, .app-buttons::before {
+    border: 3px solid black;
+    position: absolute;
+    background-color: #FFFFF0;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: transform 0.4 ease;
+    color: #2A2B2A;
+    border-radius: 2px;
+    padding: 2px 22px;
+    margin: 32px;
 }
+
