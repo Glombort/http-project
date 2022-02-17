@@ -4,54 +4,62 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"  href=".\styles\styles.css">
     <link rel="stylesheet" href="style.css">
     <title>Http Project</title>
 </head>
 <body>
-
-  <main>
-    
-    <button data-modal-target="#modal">View Instructions</button>
+    <header>
+        <div class="site-name"><h1>HTTP-Project</h1></div>
+        <nav>
+            <div class="container" data-modal-target="#modal" tabindex="0">
+                <div class="bar1"></div>
+                <div class="bar2"></div>
+                <div class="bar3"></div>
+              </div>
+        </nav>
+    </header>
     <div class="modal" id="modal">
-      <div class="modal-header">
-        <div class="title">Instructions</div>
-        <button data-close-button class="close-button">&times;</button>
+        <div class="modal-header">
+          <div class="title">Instructions</div>
+          <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            Select a date and press submit to view the top news story from that day.
+            <br>
+            <br>
+            Click the FUN button to generate a new article with a different heading and image.
+        </div>
       </div>
-      <div class="modal-body">
-          Select a date and press submit to view the top news story from that day.
-          <br>
-          <br>
-          Click the FUN button to generate a new article with a different heading and image.
-      </div>
-    </div>
-    <div id="overlay"></div>
+      <div id="overlay"></div>
+    <main class="stack-lg">
+    
+    
+    
 
 
-    <div>
-        <form class="date-picker">
-            <label for="Select Date">Select Date:</label>
+    <section class="forms center row">
+        <form class="date-picker stack-sm center grid width-sm">
 
-            <input class="input" id="date-picker" type="date" name="Date-Picker"
+            <label for="date-picker">Select Date:</label>
+            <input class="input center" id="date-picker" type="date" name="Date-Picker"
                 min="" max="2000-13-13">
-            <input type="submit">
+
+            <button type="submit" class="button center">Submit Date</button>
         </form>       
         
-        <form class="fun hide">
-        <button type="submit">Fun!</button>
+        <form class="fun hide center">
+        <button type="submit" class="button">Fun!</button>
         </form>
-    </div>
+    </section>
+
+    <output class="output row center width-lg stack-md"></output>
 
 
-
-    <output></output>
-
-
-        <div class="news-container">
+        <!-- <div class="news-container">
             <ul class="relevant-news">
                 <p class="relevant-news"></p>
             </ul>
-        </div>
+        </div> -->
 
 
 </main>
