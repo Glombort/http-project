@@ -22,9 +22,9 @@ The ability to add some fun to articles by changing the image and headline of an
 
 ## Which APIs are utilised
 
-- [NewsAPI](https://newsapi.org/#documentation)
-- [Corporate Buzzword](https://github.com/sameerkumar18/corporate-bs-generator-api)
-- [picsum](https://picsum.photos/)
+- [NewsAPI](https://newsapi.org/#documentation) A collection of past news headlines
+- [Corporate Buzzword](https://github.com/sameerkumar18/corporate-bs-generator-api) A random buzzword generator
+- [picsum](https://picsum.photos/) A random Image Generator
 
 ---
 
