@@ -98,3 +98,8 @@ nav {
     margin: 32px;
 }
 
+.outputs {
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 500px
+}
