@@ -57,6 +57,7 @@ function retrieveNews(e) {
         let li = document.createElement("li") //Creating a list of headlines.
         let a = document.createElement("a") //Creating the anchor tags to link to the articles.
         let p = document.createElement("p") 
+        p.className = "description"
         a.setAttribute('href', articles.url) //The anchor tag will open to the url of the article selected.
         a.setAttribute('target', '_blank') //Opens the article in a new tab.
         a.textContent = articles.title
@@ -95,6 +96,7 @@ function outputArticle(article) {
     // Written By
     const writer = document.createElement('h3');
     writer.innerHTML = `Written by - ${author}`;
+   
 
     //Synopsis
     const synopsis = document.createElement('p')
