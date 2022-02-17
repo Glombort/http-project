@@ -24,7 +24,7 @@ The ability to add some fun to articles by changing the image and headline of an
 
 - [NewsAPI](https://newsapi.org/#documentation)
 - [Corporate Buzzword](https://github.com/sameerkumar18/corporate-bs-generator-api)
-<!-- Still need to work out an image API -->
+- [picsum](https://picsum.photos/)
 
 ---
 
