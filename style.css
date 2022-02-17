@@ -9,10 +9,11 @@
     border: 1px solid black;
     border-radius: 10px;
     z-index: 12;
-    background-color: white;
+    background-color: #2A2B2A;
     width: 500px;
     max-width: 80%;
     transition: 200ms ease-in-out;
+    
 }
 
 .modal.active {
@@ -25,11 +26,13 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid black;
+    
 }
 
 .modal-header .title {
     font-size: 1.25rem;
     font-weight: bold;
+    color:#edf7f6 !important
 }
 
 .modal-header .close {
@@ -42,6 +45,7 @@
 
 .modal-body {
     padding: 10px 15px;
+    color:#edf7f6 !important
 }
 
 #overlay {
@@ -141,16 +145,20 @@ main {
 }
   
 body {
-    font-family: system-ui, sans-serif;
+    font-family:'Lato', sans-serif;;
     background-color: #edf7f6;
     margin-bottom: 3rem;
 }
   
 img {
-    display: block;
+
     max-width: 100% !important;
     height: auto;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 
 /*Form buttons*/
 .button {
@@ -159,12 +167,12 @@ img {
     border: 0;
     padding: 0.25rem 1.25rem;
     font: inherit;
-    background-color:#1d84b5;
+    background-color:#249cd3;
     color:#000000;
 }
 
 .button:hover, .button:focus {
-      background-color: #175e80;
+      background-color: #3dafe4;
 }
 
 
@@ -194,3 +202,24 @@ header {
     background-color: #333;
     margin: 6px 0;
 }
+
+.submits {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-family: 'Lato', sans-serif;
+    align-items: center;
+}
+
+.headline {
+    font-family:'Lato', sans-serif;
+    list-style: none;
+    color: #2A2B2A;
+}
+
+.description {
+    list-style: none;
+    color: #2A2B2A;
+    font-family:'Lato', sans-serif;
+} 
