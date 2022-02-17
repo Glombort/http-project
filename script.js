@@ -19,7 +19,7 @@ document.getElementById("date-picker").setAttribute("max", today);
 
 
 //Set variables for the api key and base url used in all fetches to the news api
-const newsAPIKEY = "0339a12944af485e80cd4cdbb6541d75"
+const newsAPIKEY = "8e73ccc1d2274435a320a8b3dae0d7bb"
 const baseNewsURL = "https://newsapi.org/v2/"
 
 //FETCH THE ARTICLES
@@ -42,31 +42,13 @@ function retrieveNews(e) {
 
     let articleHeadline = input.value;
     let url = `${baseNewsURL}everything?q=${articleHeadline}&apiKey=${newsAPIKEY}`
-  
-  
-  console.log(articleHeadline);
+
   
   fetch(url)
   .then((response) => {
       return response.json()
     })
-  .then((data) => {console.log(data)
-    outputArticle(data.articles[0]) //Using the first article found for now, can change to something else later
-        //DISPLAY THE HEADLINES:
-    // data.articles.forEach(articles => {
-    //     let li = document.createElement("li") //Creating a list of headlines.
-    //     let a = document.createElement("a") //Creating the anchor tags to link to the articles.
-    //     let p = document.createElement("p") 
-    //     a.setAttribute('href', articles.url) //The anchor tag will open to the url of the article selected.
-    //     a.setAttribute('target', '_blank') //Opens the article in a new tab.
-    //     a.textContent = articles.title
-    //     p.textContent = articles.description
-    //     li.appendChild(a) 
-    //     result.appendChild(li)
-    //     result.append(p)
-    // })
-  }); 
-
+  .then((data) => outputArticle(data.articles[0])) //Using the first article found for now, can change to something else later
 }
 
 
