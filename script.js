@@ -19,7 +19,7 @@ document.getElementById("date-picker").setAttribute("max", today);
 
 
 //Set variables for the api key and base url used in all fetches to the news api
-const newsAPIKEY = "8e73ccc1d2274435a320a8b3dae0d7bb"
+const newsAPIKEY = "6cde06a0b08240579bfd3ff55da2decf"
 const baseNewsURL = "https://newsapi.org/v2/"
 
 //FETCH THE ARTICLES
