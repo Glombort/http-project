@@ -38,7 +38,6 @@ The ability to add some fun to articles by changing the image and headline of an
 <img src="./images/landing.png"
      alt="Landing Page"
      style="height:25rem;" />
-     
 <img src="./images/instructions.png"
      alt="Landing Page"
      style="height:25rem;" />
@@ -46,7 +45,6 @@ The ability to add some fun to articles by changing the image and headline of an
 <img src="./images/article.png"
      alt="Article"
      style="height:25rem;" />
-
 <img src="./images/fun-article.png"
      alt="Fun Article"
      style="height:25rem;" />   
