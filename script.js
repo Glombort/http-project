@@ -27,7 +27,7 @@ const search = document.querySelector(".date-picker")
 const input = document.querySelector(".input")
 
 const output = document.querySelector('output')
-const result = document.querySelector(".relevant-news")
+// const result = document.querySelector(".relevant-news")
 
 //Get the button for the fun for later
 const fun = document.querySelector(".fun");
@@ -36,7 +36,7 @@ search.addEventListener("submit", retrieveNews)
 
 function retrieveNews(e) {
     
-    result.innerHTML = "" //Clears the page when a new date is submitted.
+    // result.innerHTML = "" //Clears the page when a new date is submitted.
     e.preventDefault() //To prevent page from reloading automatically when a date is submitted.
     fun.classList.remove("hide")
 
@@ -53,18 +53,18 @@ function retrieveNews(e) {
   .then((data) => {console.log(data)
     outputArticle(data.articles[0]) //Using the first article found for now, can change to something else later
         //DISPLAY THE HEADLINES:
-    data.articles.forEach(articles => {
-        let li = document.createElement("li") //Creating a list of headlines.
-        let a = document.createElement("a") //Creating the anchor tags to link to the articles.
-        let p = document.createElement("p") 
-        a.setAttribute('href', articles.url) //The anchor tag will open to the url of the article selected.
-        a.setAttribute('target', '_blank') //Opens the article in a new tab.
-        a.textContent = articles.title
-        p.textContent = articles.description
-        li.appendChild(a) 
-        result.appendChild(li)
-        result.append(p)
-    })
+    // data.articles.forEach(articles => {
+    //     let li = document.createElement("li") //Creating a list of headlines.
+    //     let a = document.createElement("a") //Creating the anchor tags to link to the articles.
+    //     let p = document.createElement("p") 
+    //     a.setAttribute('href', articles.url) //The anchor tag will open to the url of the article selected.
+    //     a.setAttribute('target', '_blank') //Opens the article in a new tab.
+    //     a.textContent = articles.title
+    //     p.textContent = articles.description
+    //     li.appendChild(a) 
+    //     result.appendChild(li)
+    //     result.append(p)
+    // })
   }); 
 
 }
@@ -78,43 +78,56 @@ Output Area
 
 
 function outputArticle(article) {
-    //Clearing output for new article
-    output.innerHTML = ""
-    //Fetching the different data
-    const author = article.author;
-    const description = article.description;
-    const title = article.title;
-    const linkURL = article.url;
-    const imageURL = article.urlToImage;
+  //Clearing output for new article
+  output.innerHTML = ""
+  //Fetching the different data
+  const source = article.source.name
+  const author = article.author;
+  const description = article.description;
+  const title = article.title;
+  const linkURL = article.url;
+  const imageURL = article.urlToImage;
+  //Takes first part of linkURL which is the source of the content.
+  const sourceURL = `${linkURL.split(".com")[0]}.com`
 
-    //Headline
-    const headline = document.createElement('h2');
-    headline.textContent = title;
-    headline.className = "headline"
+  //Headline
+  const headline = document.createElement('h2');
+  headline.textContent = title;
+  headline.classList.add("headline", "news-article")
 
-    // Written By
-    const writer = document.createElement('h3');
+  // Written By
+  const writer = document.createElement('h3');
+  //If no author in API use the source name
+  if (author == null) {
+    writer.innerHTML = `Written by - <a href=${sourceURL}>${source}</a>`;
+  } else {
     writer.innerHTML = `Written by - ${author}`;
+  }
+  
+  writer.classList.add("news-article")
 
-    //Synopsis
-    const synopsis = document.createElement('p')
-    synopsis.innerHTML = description
-    
-    //Image
-    const articleImage = document.createElement('img');
-    articleImage.src = imageURL;
-    articleImage.alt = `Image for ${title}`
-    articleImage.className = "article-image"
+  //Synopsis
+  const synopsis = document.createElement('p')
+  synopsis.innerHTML = `${description} <a href=${linkURL}>Read More</a>`
+  synopsis.classList.add("news-article")
+  
+  //Image
+  const articleImage = document.createElement('img');
+  articleImage.src = imageURL;
+  articleImage.alt = `Image for ${title}`
+  articleImage.classList.add("article-image", "center", "news-article")
 
-    //Creating sections for each part
-    const wordSection = document.createElement('article');
-    const imageSection = document.createElement('article');
+  //Creating sections for each part
+  const wordSection = document.createElement('article');
+  const imageSection = document.createElement('article');
 
-    //Apending to specific sections
-    wordSection.append(headline, writer, synopsis);
-    imageSection.append(articleImage);
-    //Appending sections to overall output area
-    output.append(wordSection, imageSection)
+  wordSection.classList.add("center", "stack-sm")
+  imageSection.classList.add("center")
+  //Apending to specific sections
+  wordSection.append(headline, writer, synopsis);
+  imageSection.append(articleImage);
+  //Appending sections to overall output area
+  output.append(wordSection, imageSection)
 }
 
 
@@ -124,7 +137,7 @@ Secondary API's
 
 //Urls for other APIs, these don't need keys.
 const buzzURL = "https://corporatebs-generator.sameerkumar.website/"
-const picsumURL = "https://picsum.photos/200/300" //Can change the numbers for sizing when have proper layout
+const picsumURL = "https://picsum.photos/600/400" //Can change the numbers for sizing when have proper layout
 
 //Event Listener for clicking the button
 fun.addEventListener("submit", secondaryAPI);

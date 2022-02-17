@@ -1,3 +1,6 @@
+/*
+    Instruction Box 
+*/
 .modal {
     position: fixed;
     top: 50%;
@@ -56,4 +59,138 @@
 #overlay.active {
     pointer-events: all;
     opacity: 1;
+}
+
+/* Hides elements until they're necessary */
+.hide {
+    display: none;
+}
+
+
+/* Layout primitives */
+
+.center {
+    max-width: 40rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+.width-sm {
+    max-width: 20rem;
+}
+  
+.width-lg {
+    max-width: 60rem;
+}
+  
+.stack-sm > * + * {
+    margin-top: 0.5rem;
+}
+  
+.stack-md > * + * {
+    margin-top: 1rem;
+}
+  
+.stack-lg > * + * {
+    margin-top: 2rem;
+}
+  
+.stack-xl > * + * {
+    margin-top: 4rem;
+}
+  
+.row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+  
+.gap-lg {
+    gap: 2rem;
+}
+  
+.gap-xl {
+    gap: 4rem;
+}
+  
+.justify-space-between {
+    justify-content: space-between;
+}
+  
+.grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(10rem, 1fr));
+    gap: 1rem;
+    align-items: center;
+    text-align: center;
+}
+      
+* {
+    box-sizing: border-box;
+    margin: 0;
+    color: #2a2b2a;
+}
+
+main {
+    padding: 3rem 1.5rem;
+}
+
+.news-article {
+    background-color: #9cd4cf;
+}
+  
+body {
+    font-family: system-ui, sans-serif;
+    background-color: #edf7f6;
+    margin-bottom: 3rem;
+}
+  
+img {
+    display: block;
+    max-width: 100% !important;
+    height: auto;
+}
+
+/*Form buttons*/
+.button {
+    display: inline-block;
+    border-radius: 4px;
+    border: 0;
+    padding: 0.25rem 1.25rem;
+    font: inherit;
+    background-color:#1d84b5;
+    color:#000000;
+}
+
+.button:hover, .button:focus {
+      background-color: #175e80;
+}
+
+
+
+output {
+      padding: 4rem, 0.75rem;
+}
+/*Navbar*/
+header {
+    padding: 0 20px;
+    background-color:#1d84b5;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+}
+
+/*Hamburger Menu*/
+.container {
+    display: inline-block;
+    cursor: pointer;
+}
+  
+.bar1, .bar2, .bar3 {
+    width: 2rem;
+    height: 0.3rem;
+    background-color: #333;
+    margin: 6px 0;
 }
